@@ -21,4 +21,14 @@ def get_channel_id(channel_name):
     channel_id = items[0]['id']
     return title, pfp, channel_id
 
-print(get_channel_id("pipkinpippa"))
+
+
+def get_upcoming_stream(channelId):
+  params = {
+    'part': 'snippet',
+    'channelId': channelId, 
+    'eventType': 'upcoming',
+    'type': 'video',
+    'key': api_key
+  }
+  response = requests.get('https://www.googleapis.com/youtube/v3/search', params=params)
